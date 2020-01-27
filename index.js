@@ -1,5 +1,4 @@
-const { app, BrowserWindow, dialog, ipcMain, Tray } = require("electron");
-app.setAppUserModelId(process.execPath);
+const { app, BrowserWindow } = require("electron");
 
 // A global variable can be accessed by other processes
 global.APP_TITLE = "Simple Audio Player";
@@ -34,18 +33,11 @@ function createWindow() {
   });
 }
 
-let tray;
-function setUpTray() {
-  tray = new Tray("assets/favicon-32x32.png");
-  tray.setToolTip("Simple Audio Player.");
-}
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on("ready", () => {
   createWindow();
-  setUpTray();
 });
 
 // Quit when all windows are closed.
@@ -67,37 +59,3 @@ app.on("activate", () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-async function getAudioFilePath() {
-  return new Promise((resolve, reject) => {
-    dialog
-      .showOpenDialog({
-        properties: ["openFile"],
-        filters: [
-          {
-            name: "Audio",
-            extensions: ["mp3", "ogg", "wav"]
-          }
-        ]
-      })
-      .then(result => {
-        if (result.canceled) {
-          reject("User cancelled action");
-        } else {
-          resolve(result.filePaths[0]);
-        }
-      })
-      .catch(err => reject(err));
-  });
-}
-
-ipcMain.handle("getAudioFilePath", async () => {
-  return await getAudioFilePath();
-});
-
-ipcMain.handle("showSongTitleBalloon", (_event, songName) => {
-  tray.displayBalloon({
-    icon: "assets/favicon-32x32.png",
-    title: "Simple Audio Player",
-    content: "Currently playing: " + songName
-  });
-});
