@@ -10,7 +10,7 @@ Links and tips that might be useful
 - [Official documentation](https://electronjs.org/docs)
 - Refresh and reload content in BrowserWindows with CTRL + SHIFT + R.
 - Use DevTools to debug BrowserWindows. Open Devtools with CTRL + SHIFT + J
-- Can use your IDE to debug the main process. [Link to debug main process in VS Code](https://electronjs.org/docs/tutorial/debugging-main-process-vscode).
+- Use your IDE to debug the main process. [Link to debug main process in VS Code](https://electronjs.org/docs/tutorial/debugging-main-process-vscode).
 - Check out the possibilities with the [Electron API Demo App](https://github.com/electron/electron-api-demos)
   - Either clone repo or download and install as program
 
@@ -22,7 +22,7 @@ In this tutorial we will create an audio player.
 
 #### Audio element
 
-1. Add an [audio element](https://www.w3schools.com/html/html5_audio.asp) with controls in audioplayer.html to use HTML5 to play the audio. We need to get the path for an audio file the user selects to use it as source. Getting a file path is a perfect job for the [showOpenDialog method](https://electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options) from dialog API. Since dialog API only works in the main process and we want the user to pick the audio file when interacting with audioplayer.html we must use [ipcRenderer invoke](https://electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args) method in the renderer to call an [ipcMain.handle method](https://electronjs.org/docs/api/ipc-main#ipcmainhandlechannel-listener) in the main process.
+1. There is already an [audio element](https://www.w3schools.com/html/html5_audio.asp) in audioplayer.html that uses HTML5 to play audio. We need to get the path for an audio file the user selects to use it as source. Getting a file path is a perfect job for the [showOpenDialog method](https://electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options) from dialog API. Since dialog API only works in the main process and we want the user to pick the audio file when interacting with audioplayer.html we must use [ipcRenderer invoke](https://electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args) method in the renderer to call an [ipcMain.handle method](https://electronjs.org/docs/api/ipc-main#ipcmainhandlechannel-listener) in the main process.
    - Add a button "Browse for audio" in audioplayer.html, that when clicked calls getAudioFilePath in the main process. The getAudioFilePath should invoke a showOpenDialog method.
    - In showOpenDialog options, you can use the following as filters:
 
