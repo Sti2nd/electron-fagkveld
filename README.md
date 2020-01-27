@@ -7,7 +7,7 @@ Electron tutorial til frontend fagkveld 28.02.2019
 Links and tips that might be useful
 
 - If using VS Code you can right click on this file as choose "Open Preview"
-- [Official documentation](https://electronjs.org/docs)
+- [Official Electron documentation](https://electronjs.org/docs)
 - Refresh and reload content in BrowserWindows with CTRL + SHIFT + R.
 - Use DevTools to debug BrowserWindows. Open Devtools with CTRL + SHIFT + J
 - Use your IDE to debug the main process. [Link to debug main process in VS Code](https://electronjs.org/docs/tutorial/debugging-main-process-vscode).
