@@ -16,7 +16,7 @@ Links and tips that might be useful
 
 ## Tutorial: Simple Audio Player app
 
-In this tutorial we will create an audio player.
+In this tutorial we will create an audio player. The files we are going to write code in are: ```index.js```, ```audioplayer.html``` and ```audioplayer.js```. You can use ```npm start``` or ```electron .``` to run the program.
 
 ### The basic audio player
 
