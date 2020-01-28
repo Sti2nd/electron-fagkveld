@@ -57,9 +57,10 @@ Showing the title of the song is a must-have feature. We can simply use the file
 
 We want to spam the user with a notification each time a song begins to play. We can use the HTML5 Notification API.
 
-1. (Mac and Linux) Use the Notification tutorial and show the title of the current song playing.
+1. (Mac and Linux) Use the [Notification tutorial](https://electronjs.org/docs/tutorial/notifications) and show the title of the current song playing.
 2. (Windows) The above code works on Windows too, just not in development (without an Application User Model ID). To see that notifications works we can use the [Tray API](https://electronjs.org/docs/api/tray) and display a [balloon in the tray](https://electronjs.org/docs/api/tray#traydisplayballoonoptions-windows) (which on Windows 10 seems to have the exact same appearance as a notification).
-   - Create a new Tray and show the title of the song in the balloon. Use ```favicon-32x32.png``` in assets as icon.
+   - Create a new Tray
+   - Show the title of the song in the balloon. Use ```favicon-32x32.png``` in assets as icon.
    - NB: When displaying the balloon please set the icon field to avoid [a bug](https://github.com/electron/electron/issues/5844)
 
 #### Open in another program
