@@ -65,9 +65,10 @@ We want to spam the user with a notification each time a song begins to play. We
 
 #### Open in another program
 
-We want the ability to open the song in another music app. Create a button that plays the song in the another music program.
+We want the ability to open the song in another music app.
 
-1. Using Node.js [Child Process API](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) to access the command line. Import exec to execute the below commands.
+1. Create a button.
+2. Use Node.js [Child Process API](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) to access the command line. Import exec and execute the below commands.
 
     ```JavaScript
     const { exec } = require('child_process')
@@ -81,4 +82,4 @@ We want the ability to open the song in another music app. Create a button that 
 
 And now we want to… creep the user out by using the [Clipboard API](https://electronjs.org/docs/api/clipboard)?
 
-Or perhaps play with the [Menu API](https://electronjs.org/docs/api/menu). The sky is the limit! Bring your app to world dominance!
+Or perhaps play with the [Menu API](https://electronjs.org/docs/api/menu). The sky is the limit! Bring your desktop app to world dominance!
