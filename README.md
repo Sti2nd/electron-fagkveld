@@ -23,8 +23,8 @@ In this tutorial we will create an audio player. The files we are going to write
 #### Audio element
 
 1. There is already an [audio element](https://www.w3schools.com/html/html5_audio.asp) in audioplayer.html that uses HTML5 to play audio. We need to get the path for an audio file the user selects to use it as source. Getting a file path is a perfect job for the [showOpenDialog method](https://electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options) from dialog API. Since dialog API only works in the main process and we want the user to pick the audio file when interacting with audioplayer.html we must use [ipcRenderer invoke](https://electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args) method in the renderer to call an [ipcMain.handle method](https://electronjs.org/docs/api/ipc-main#ipcmainhandlechannel-listener) in the main process.
-   - Add a button "Browse for audio" in audioplayer.html, that when clicked calls getAudioFilePath in the main process. The getAudioFilePath should invoke a showOpenDialog method.
-   - In showOpenDialog options, you can use the following as filters:
+   - Add a button "Browse for audio" in audioplayer.html, that when clicked calls getAudioFilePath in the main process.
+   - The getAudioFilePath should invoke a showOpenDialog method. In showOpenDialog options, you can use the following as filters:
 
         ```JavaScript
         filters: [{
