@@ -22,7 +22,7 @@ In this tutorial we will create an audio player. The files we are going to write
 
 #### Audio element
 
-1. There is already an [audio element](https://www.w3schools.com/html/html5_audio.asp) in audioplayer.html that uses HTML5 to play audio. We need to get the path for an audio file the user selects to use it as source. Getting a file path is a perfect job for the [showOpenDialog method](https://electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options) from dialog API. Since dialog API only works in the main process and we want the user to pick the audio file when interacting with audioplayer.html we must use [ipcRenderer invoke](https://electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args) method in the renderer to call an [ipcMain.handle method](https://electronjs.org/docs/api/ipc-main#ipcmainhandlechannel-listener) in the main process.
+1. There is already an [audio element](https://www.w3schools.com/html/html5_audio.asp) in audioplayer.html that uses HTML5 to play audio. We need to get the path for an audio file the user selects to use it as source. Getting a file path is a perfect job for the [showOpenDialog method](https://electronjs.org/docs/api/dialog#dialogshowopendialogbrowserwindow-options) from dialog API. Since dialog API only works in the main process and we want the user to pick the audio file when interacting with audioplayer.html we must use [ipcRenderer invoke](https://electronjs.org/docs/api/ipc-renderer#ipcrendererinvokechannel-args) method in the renderer process to call an [ipcMain.handle method](https://electronjs.org/docs/api/ipc-main#ipcmainhandlechannel-listener) in the main process.
    - Add a button "Browse for audio" in audioplayer.html, that when clicked calls getAudioFilePath in the main process.
    - The getAudioFilePath should invoke a showOpenDialog method. In showOpenDialog options, you can use the following as filters:
 
@@ -33,10 +33,10 @@ In this tutorial we will create an audio player. The files we are going to write
         }]
         ```
 
-   - In getAudioFilePath return a Promise that resolves the path to the selected file.
+   - In getAudioFilePath return the path to the selected file (or a Promise that resolves the filePath).
    - Finish the implementation and you should be able to select and play audio files!
 2. If the user clicks the "Browse for audio" button again one need to delete/replace the current source to be able to play the new source.
-   - Delete the previous source element / replace the src when the user selects a new one.
+   - Delete the previous source element / replace the src attribute when the user selects a new one.
    - Call the ```load()``` method on your audio element to force it to reload the source.
 
 #### Track information
